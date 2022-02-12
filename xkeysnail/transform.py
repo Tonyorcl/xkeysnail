@@ -134,7 +134,8 @@ def K(exp):
     import re
     modifier_strs = []
     while True:
-         m = re.match(r"\A(LC|LCtrl|RC|RCtrl|C|Ctrl|LM|LAlt|RM|RAlt|M|Alt|LShift|RShift|Shift|LSuper|LWin|RSuper|RWin|Super|Win|LH|LHyper|RH|RHyper|H|Hyper)-", exp)        if m is None:
+         m = re.match(r"\A(LC|LCtrl|RC|RCtrl|C|Ctrl|LM|LAlt|RM|RAlt|M|Alt|LShift|RShift|Shift|LSuper|LWin|RSuper|RWin|Super|Win|LH|LHyper|RH|RHyper|H|Hyper)-", exp)
+            if m is None:
             break
         modifier = m.group(1)
         modifier_strs.append(modifier)

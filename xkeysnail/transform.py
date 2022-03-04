@@ -134,7 +134,7 @@ def K(exp):
     import re
     modifier_strs = []
     while True:
-        m = re.match(r"\A(LC|LCtrl|RC|RCtrl|C|Ctrl|LM|LAlt|RM|RAlt|M|Alt|LShift|RShift|Shift|LSuper|LWin|RSuper|RWin|Super|Win)-", exp)
+        m = re.match(r"\A(LC|LCtrl|RC|RCtrl|C|Ctrl|LM|LAlt|RM|RAlt|M|Alt|LS|LShift|RS|RShift|S|Shift|LU|LSuper|LWin|RU|RSuper|RWin|U|Super|Win|L3A|R3A|D3A|L4A|R4A|D4A|L1B|R1B|D1B|L2B|R2B|D2B|L3B|R3B|D3B|L4B|R4B|D4B)-", exp)
         if m is None:
             break
         modifier = m.group(1)
@@ -160,21 +160,57 @@ def create_modifiers_from_strings(modifier_strs):
             modifiers.add(Modifier.R_ALT)
         elif modifier_str == 'M' or modifier_str == 'Alt':
             modifiers.add(Modifier.ALT)
-        elif modifier_str == 'LSuper' or modifier_str == 'LWin':
+        elif modifier_str == 'LSuper' or modifier_str == 'LWin' or modifier_str == 'LU':
             modifiers.add(Modifier.L_SUPER)
             pass
-        elif modifier_str == 'RSuper' or modifier_str == 'RWin':
+        elif modifier_str == 'RSuper' or modifier_str == 'RWin' or modifier_str == 'RU':
             modifiers.add(Modifier.R_SUPER)
             pass
-        elif modifier_str == 'Super' or modifier_str == 'Win':
+        elif modifier_str == 'Super' or modifier_str == 'Win' or modifier_str == 'U':
             modifiers.add(Modifier.SUPER)
             pass
-        elif modifier_str == 'LShift':
+        elif modifier_str == 'LShift' or modifier_str == 'LS':
             modifiers.add(Modifier.L_SHIFT)
-        elif modifier_str == 'RShift':
+        elif modifier_str == 'RShift' or modifier_str == 'RS':
             modifiers.add(Modifier.R_SHIFT)
-        elif modifier_str == 'Shift':
+        elif modifier_str == 'Shift' or modifier_str == 'S':
             modifiers.add(Modifier.SHIFT)
+        elif modifier_str == 'L1B':
+            modifiers.add(Modifier.L_1B)
+        elif modifier_str == 'L2B':
+            modifiers.add(Modifier.L_2B)
+        elif modifier_str == 'L3B':
+            modifiers.add(Modifier.L_3B)
+        elif modifier_str == 'L4B':
+            modifiers.add(Modifier.L_4B)
+        elif modifier_str == 'L3A':
+            modifiers.add(Modifier.L_3A)
+        elif modifier_str == 'L4A':
+            modifiers.add(Modifier.L_4A)
+        elif modifier_str == 'R1B':
+            modifiers.add(Modifier.R_1B)
+        elif modifier_str == 'R2B':
+            modifiers.add(Modifier.R_2B)
+        elif modifier_str == 'R3B':
+            modifiers.add(Modifier.R_3B)
+        elif modifier_str == 'R4B':
+            modifiers.add(Modifier.R_4B)
+        elif modifier_str == 'R3A':
+            modifiers.add(Modifier.R_3A)
+        elif modifier_str == 'R4A':
+            modifiers.add(Modifier.R_4A)
+        elif modifier_str == 'D1B':
+            modifiers.add(Modifier.D_1B)
+        elif modifier_str == 'D2B':
+            modifiers.add(Modifier.D_2B)
+        elif modifier_str == 'D3B':
+            modifiers.add(Modifier.D_3B)
+        elif modifier_str == 'D4B':
+            modifiers.add(Modifier.D_4B)
+        elif modifier_str == 'D3A':
+            modifiers.add(Modifier.D_3A)
+        elif modifier_str == 'D4A':
+            modifiers.add(Modifier.D_4A)
     return modifiers
 
 # ============================================================

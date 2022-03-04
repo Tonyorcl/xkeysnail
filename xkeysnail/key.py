@@ -742,8 +742,14 @@ class Modifier(Enum):
     L_CONTROL, R_CONTROL, CONTROL, \
         L_ALT, R_ALT, ALT, \
         L_SHIFT, R_SHIFT, SHIFT, \
-        L_SUPER, R_SUPER, SUPER = range(12)
-
+        L_SUPER, R_SUPER, SUPER, \
+        L_3A, R_3A, D_3A, \
+        L_4A, R_4A, D_4A, \
+        L_1B, R_1B, D_1B, \
+        L_2B, R_2B, D_2B, \
+        L_3B, R_3B, D_3B, \
+        L_4B, R_4B, D_4B = range(30)
+    
     @classmethod
     def _get_modifier_map(cls):
         return {
@@ -758,7 +764,25 @@ class Modifier(Enum):
             cls.SHIFT: {Key.LEFT_SHIFT, Key.RIGHT_SHIFT},
             cls.L_SUPER: {Key.LEFT_META},
             cls.R_SUPER: {Key.RIGHT_META},
-            cls.SUPER: {Key.LEFT_META, Key.RIGHT_META}
+            cls.SUPER: {Key.LEFT_META, Key.RIGHT_META},
+            cls.L_1B: { Key.F20 },
+            cls.R_1B: { Key.F21 },
+            cls.D_1B: { Key.F20, Key.F21 },
+            cls.L_2B: { Key.F19 },
+            cls.R_2B: { Key.F22 },
+            cls.D_2B: { Key.F19, Key.F22 },
+            cls.L_3B: { Key.F18 },
+            cls.R_3B: { Key.F23 },
+            cls.D_3B: { Key.F18, Key.F23 },
+            cls.L_4B: { Key.F17 },
+            cls.R_4B: { Key.F24 },
+            cls.D_4B: { Key.F17, Key.F24 },
+            cls.L_3A: { Key.F14 },
+            cls.R_3A: { Key.F15 },
+            cls.D_3A: { Key.F14, Key.F15 },
+            cls.L_4A: { Key.F13 },
+            cls.R_4A: { Key.F16 },
+            cls.D_4A: { Key.F13, Key.F16 }
         }
 
     def __str__(self):
@@ -774,6 +798,24 @@ class Modifier(Enum):
         if self.value == self.L_SUPER.value: return "LSuper"
         if self.value == self.R_SUPER.value: return "RSuper"
         if self.value == self.SUPER.value: return "Super"
+        if self.value == self.L_1B.value: return "L1B"
+        if self.value == self.L_2B.value: return "L2B"
+        if self.value == self.L_3B.value: return "L3B"
+        if self.value == self.L_4B.value: return "L4B"
+        if self.value == self.L_3A.value: return "L3A"
+        if self.value == self.L_4A.value: return "L3B"
+        if self.value == self.R_1B.value: return "R1B"
+        if self.value == self.R_2B.value: return "R2B"
+        if self.value == self.R_3B.value: return "R3B"
+        if self.value == self.R_4B.value: return "R4B"
+        if self.value == self.R_3A.value: return "R3A"
+        if self.value == self.R_4A.value: return "R3B"
+        if self.value == self.D_1B.value: return "D1B"
+        if self.value == self.D_2B.value: return "D2B"
+        if self.value == self.D_3B.value: return "D3B"
+        if self.value == self.D_4B.value: return "D4B"
+        if self.value == self.D_3A.value: return "D3A"
+        if self.value == self.D_4A.value: return "D3B"
         return None
 
     def is_specified(self):
@@ -784,7 +826,19 @@ class Modifier(Enum):
                 self.value == self.L_SHIFT.value or \
                 self.value == self.R_SHIFT.value or \
                 self.value == self.L_SUPER.value or \
-                self.value == self.R_SUPER.value
+                self.value == self.R_SUPER.value or \
+                self.value == self.L_1B.value or \
+                self.value == self.L_2B.value or \
+                self.value == self.L_3B.value or \
+                self.value == self.L_4B.value or \
+                self.value == self.L_3A.value or \
+                self.value == self.L_3B.value or \
+                self.value == self.R_1B.value or \
+                self.value == self.R_2B.value or \
+                self.value == self.R_3B.value or \
+                self.value == self.R_4B.value or \
+                self.value == self.R_3A.value or \
+                self.value == self.R_3B.value
 
     def to_left(self):
         if self.value == self.CONTROL.value:
@@ -795,6 +849,18 @@ class Modifier(Enum):
             return self.L_SHIFT
         elif self.value == self.SUPER.value:
             return self.L_SUPER
+        elif self.value == self.D_1B.value:
+            return self.L_1B
+        elif self.value == self.D_2B.value:
+            return self.L_2B
+        elif self.value == self.D_3B.value:
+            return self.L_3B
+        elif self.value == self.D_4B.value:
+            return self.L_4B
+        elif self.value == self.D_3A.value:
+            return self.L_3A
+        elif self.value == self.D_4A.value:
+            return self.L_4A
 
     def to_right(self):
         if self.value == self.CONTROL.value:
@@ -805,6 +871,30 @@ class Modifier(Enum):
             return self.R_SHIFT
         elif self.value == self.SUPER.value:
             return self.R_SUPER
+        elif self.value == self.D_1B.value:
+            return self.R_1B
+        elif self.value == self.D_2B.value:
+            return self.R_2B
+        elif self.value == self.D_3B.value:
+            return self.R_3B
+        elif self.value == self.D_4B.value:
+            return self.R_4B
+        elif self.value == self.D_3A.value:
+            return self.R_3A
+        elif self.value == self.D_4A.value:
+            return self.R_4A
+        elif self.value == self.D_1B.value:
+            return self.R_1B
+        elif self.value == self.D_2B.value:
+            return self.R_2B
+        elif self.value == self.D_3B.value:
+            return self.R_3B
+        elif self.value == self.D_4B.value:
+            return self.R_4B
+        elif self.value == self.D_3A.value:
+            return self.R_3A
+        elif self.value == self.D_4A.value:
+            return self.R_4A
 
     def get_keys(self):
         return self._get_modifier_map()[self]
